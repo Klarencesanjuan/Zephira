@@ -6,19 +6,22 @@
  
     --accent-color: #C773A3; 
  /* Lighter Pink for highlights */
-    --background-light: #FCEEF4; /* Very Light Pink for background */
-    --text-color-dark: #333333; /* Dark Gray for high contrast */
+    --background-light: #FCEEF4; /* Very Light Pink for background 
+ */
+    --text-color-dark: #333333; /* Dark 
+ Gray for 
+ high contrast */
     --text-color-light: #4c4c4c; /* Slightly darker light text for readability */
     --border-color: #E0E0E0;
  /* Typography: ELEGANT UPDATE (Playfair Display & Lato) */
     --font-heading: 'Playfair Display', serif;
-    --font-body: 'Lato', sans-serif;
+--font-body: 'Lato', sans-serif;
  /* Spacing & Effects */
     --spacing-xl: 120px; 
     --spacing-lg: 80px; 
     --spacing-md: 40px; 
-    --spacing-sm: 20px; 
-    --spacing-xs: 10px; 
+    --spacing-sm: 20px;
+--spacing-xs: 10px; 
     --border-radius: 12px;
  --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
  --shadow-pop: 0 10px 20px rgba(156, 51, 100, 0.2);
@@ -239,17 +242,17 @@ header {
 
 .hero-content .image-content {
     flex: 1;
-    max-width: 90%;
+    max-width: 100%;
  display: flex;
     justify-content: center;
     order: -1; 
 }
 
 .product-image-placeholder {
-    width: 280px;
-    height: 300px;
+    /* ADJUSTED FOR SQUARE FIT (330x300) */
+    width: 330px;
+ height: 300px;
     background-color: white;
- border: 2px dashed var(--accent-color); 
     border-radius: var(--border-radius);
     display: flex;
     align-items: center;
@@ -258,7 +261,20 @@ header {
     color: var(--primary-color);
     font-weight: 500;
     margin-bottom: var(--spacing-md);
+ overflow: hidden; /* Ensure image doesn't overflow container */
+    border: 2px solid #9c3364;
  }
+
+.product-image-placeholder img {
+    /* Set image dimensions to 100% of container */
+    width: 100%;
+ height: 100%;
+    /* KEY CHANGE: Scales image to cover container without stretching */
+    object-fit: cover;
+    display: block;
+ box-shadow: var(--shadow-subtle);
+    
+}
 
 /* Standard Sections */
 .section-padding {
@@ -281,6 +297,12 @@ header {
 #what-is-it #how-it-works-heading {
     margin-top: var(--spacing-md);
  }
+ 
+/* ADDED: Reduced top padding for the Certification section */
+#certification {
+    padding-top: var(--spacing-md); /* Binawasan mula 80px (lg) papuntang 40px (md) */
+}
+
 
 /* Benefits Grid */
 .benefits-grid {
@@ -288,7 +310,28 @@ header {
     flex-direction: column; 
     gap: var(--spacing-md);
     margin-top: var(--spacing-md);
- }
+    /* NEW: Add padding/margin to the grid items for better mobile presentation */
+    padding: 0 var(--spacing-xs); 
+}
+
+/* Ensure the blockquote is always below the list in mobile view */
+.benefits-grid .mindful-note {
+    order: 2; 
+    margin-top: var(--spacing-lg); /* INCREASED MARGIN for better separation */
+}
+
+/* NEW: Style the list inside the benefits grid */
+.benefits-grid .list-checkmark {
+    order: 1;
+    background-color: white; /* Add white background */
+    padding: var(--spacing-md); /* Add internal padding */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle); /* Add subtle shadow */
+}
+
+.benefits-grid .list-checkmark li {
+    margin-bottom: 15px; /* Increase vertical spacing between list items */
+}
 
 /* --- Mindful Note/Blockquote Centering and Styling --- */
 .mindful-note {
@@ -303,8 +346,7 @@ header {
     align-self: center; 
     text-align: center; 
     width: 100%; 
-    max-width: 400px;
- /* Centering Fix */
+    max-width: 600px; /* Adjusted max-width to widen the frame but maintain margin */
     margin: var(--spacing-sm) auto;
  }
 
@@ -385,22 +427,16 @@ header {
     /* Apply padding to the inner wrapper for consistent look */
     padding: 0 var(--spacing-sm);
  }
-
 /* FIX: Ensure the storage guide text and heading are left-aligned */
 .storage-guide h4 {
-    text-align: left;
- /* Naka-left align na ang heading */
-    padding-left: var(--spacing-sm);
- /* Keep it aligned with the list below */
+    text-align: left; /* Naka-left align na ang heading */
+    padding-left: var(--spacing-sm); /* Keep it aligned with the list below */
 }
-
 .storage-guide .storage-list {
-    text-align: left;
- /* Tiyakin na naka left align ang listahan */
-    padding-left: 20px;
- /* Added padding for better organization */
+    text-align: left; /* Tiyakin na naka left align ang listahan */
+    padding-left: 20px; /* Added padding for better organization */
     margin-left: 0;
- }
+}
 /* END FIX */
 
 
@@ -412,226 +448,290 @@ header {
  }
 
 .cert-highlight {
-    font-size: 1.4em; 
-    margin-bottom: var(--spacing-sm); 
+    font-size: 1.4em;
+    margin-bottom: var(--spacing-sm);
     font-weight: 700; /* Lato Bold */
     color: var(--primary-color);
+    /* IYONG HILING */
+    text-align: center;
  }
+
+/* CENTER ALIGNMENT FOR NEW BLOCK */
+.guiding-philosophy {
+    text-align: center; /* Center everything inside */
+    margin-bottom: var(--spacing-lg); /* Add space after the section */
+    /* Limit the max-width of the content for better readability in the center */
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* FIX: Ensure that the 'intro-text' paragraph is centered inside the block */
+.guiding-philosophy .intro-text {
+    text-align: center; 
+    margin-bottom: var(--spacing-md); /* INCREASED GAP for clean look */
+}
+
+/* ADDED: Center alignment for h4 and p within guiding-philosophy block */
+.guiding-philosophy h4 {
+    text-align: center;
+}
+.guiding-philosophy p {
+    text-align: center; /* Ensures the certification text is centered */
+}
+
+
+/* FIX: Centering the List itself (which is a block element) */
+.centered-list {
+    text-align: left; /* Align the list items text to the left */
+    display: inline-block; /* Treat the list as a block that can be centered */
+    margin-top: var(--spacing-md); /* INCREASED GAP for clean look */
+    max-width: 100%; /* Ensure it doesn't break out of the container */
+}
+
+
+/* NEW: Center the verification text under the certificate (FINAL FIX) */
+.verification-text {
+    /* Use !important to override any hidden conflicting rules */
+    text-align: center !important; 
+    
+    /* Siguraduhin na ang element ay block at sumasakop sa buong lapad */
+    display: block; 
+    width: 100%;
+
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
 
 /* --- FIX: Set consistent spacing for the White Certification Box Content --- */
 .cert-details h3 {
     margin-bottom: var(--spacing-sm);
- margin-top: 0; 
+    margin-top: 0;
 }
-
 .cert-details p {
     margin-bottom: var(--spacing-sm);
+    /* IYONG HILING */
+    text-align: center;
 }
-
 .cert-details .btn.primary-btn {
-    margin-top: var(--spacing-xs); 
+    margin-top: var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
- }
-
+}
 .cert-details .small-text {
-    margin-top: var(--spacing-xs); 
+    margin-top: var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
- }
+}
 /* -------------------------------------------------------------------- */
+
+
+/* --- NEW CERTIFICATE IMAGE STYLES --- */
+.certificate-photo-container {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--border-color); /* Separator line */
+}
+.certificate-image {
+    max-width: 90%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-xs);
+    box-shadow: var(--shadow-subtle);
+}
+/* ----------------------------------- */
 
 /* Footer */
 footer {
-    padding: var(--spacing-sm) 0; 
-    background-color: var(--text-color-dark); 
+    background-color: var(--text-color-dark);
     color: white;
+    padding: var(--spacing-sm) 0;
+    text-align: center;
     font-size: 0.9em;
  }
 
-footer .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
- }
-
 footer p {
-    margin: 8px 0;
     color: white;
+    font-weight: 300;
+    margin: 5px 0;
 }
 
 footer a {
     color: var(--accent-color);
- text-decoration: none;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
 footer a:hover {
-    color: white;
- }
+    color: var(--background-light);
+}
 
-/* Accordion */
+/* ------------------------------------------- */
+/* --- ACCORDION STYLES (for Dosage Guide) --- */
+/* ------------------------------------------- */
 details.accordion {
-    background-color: white;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    margin-top: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    background-color: white;
     box-shadow: var(--shadow-subtle);
- cursor: default; 
+    padding: 0; /* Important: reset padding */
+    overflow: hidden; /* Contains the border-radius */
+    transition: box-shadow 0.3s;
+}
+
+details.accordion:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 details.accordion summary {
-    font-family: var(--font-heading);
-    font-weight: 700;
- /* Playfair Display Bold */
-    font-size: 1.1em;
-    padding: var(--spacing-sm);
-    cursor: pointer; 
-    color: var(--primary-color);
-    list-style: none; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px var(--spacing-sm);
+    cursor: pointer;
+    list-style: none; /* Hide default marker */
     position: relative;
- display: block; 
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    transition: background-color 0.3s;
 }
 
-/* --- ACCORDION CONTENT ANIMATION (Dynamic Height via JS) --- */
+details.accordion[open] summary,
+details.accordion.is-open summary {
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 1. Content Wrapper for smooth animation (Uses max-height via JS) --- */
 .accordion-content-wrapper {
     /* Initial state: Must be 0 initially */
     max-height: 0;
- opacity: 0;
+    opacity: 0;
     visibility: hidden;
-    overflow: hidden; 
+    overflow: hidden;
     transition: max-height 0.5s ease-in-out, opacity 0.4s ease, visibility 0.5s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
- display: block; 
+    display: block;
 }
-
 /* This class only controls visibility/opacity, JS handles the max-height */
 .accordion.is-open > .accordion-content-wrapper {
     opacity: 1;
- visibility: visible;
+    visibility: visible;
 }
 
 /* Ensure the UL and P tags inside the wrapper have correct spacing */
 .accordion-content-wrapper p {
     margin-top: 0;
- padding-left: var(--spacing-sm);
+    padding-left: var(--spacing-sm);
     padding-right: var(--spacing-sm);
 }
+
 .accordion-content-wrapper ul {
     padding-right: var(--spacing-sm);
- }
-
-details.accordion.is-open .accordion-content-wrapper ul {
-    padding-bottom: var(--spacing-sm); /* Add bottom padding when open */
 }
 
+details.accordion.is-open .accordion-content-wrapper ul {
+    padding-bottom: var(--spacing-sm);
+ /* Add bottom padding when open */
+}
 
 details.accordion summary::after {
     content: '+';
- position: absolute;
+    position: absolute;
     right: var(--spacing-sm);
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.5em;
     line-height: 1;
     transition: transform 0.3s;
- }
+}
 
 /* Update marker rule to use the new class */
 details.accordion.is-open summary::after {
     content: '−';
     transform: translateY(-50%) rotate(0deg);
- }
+}
 
 /* 2. Styling for the UNORDERED LIST (ul) inside the accordion (Tapering/Injection) */
 details.accordion ul {
     list-style: none;
- padding-left: 0;
-    margin-left: var(--spacing-sm); 
+    padding-left: 0;
+    margin-left: var(--spacing-sm);
 }
 
 details.accordion ul li {
     position: relative;
-    padding-left: 30px; 
+    padding-left: 30px;
     margin-bottom: 8px;
     font-size: 1em;
- margin-left: 0; 
+    margin-left: 0;
 }
 
 /* 3. The custom bullet itself for the accordion */
 details.accordion ul li::before {
     content: '•';
- color: var(--primary-color); 
+    color: var(--primary-color);
     font-size: 1.2em;
     position: absolute;
-    left: 0; 
+    left: 0;
     top: -1px;
     font-weight: 700;
     line-height: 1.6;
- }
+}
 /* ------------------------------------------- */
 
-
 /* --- CUSTOM LIST STYLES (Checkmark, Bullet, X) --- */
-
 /* Base style for custom lists */
 .list-checkmark, .list-bullet, .list-x {
     list-style: none;
- padding-left: 0;
+    padding-left: 0;
     flex: 1;
-    margin-top: 0.5em; 
+    margin-top: 0.5em;
 }
 
 .list-checkmark li, .list-bullet li, .list-x li {
     position: relative;
     padding-left: 30px;
- margin-bottom: 12px; 
-    font-size: 1.05em; 
-    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
-/* Checkmark List Style (for Benefits/How it works) */
+/* Checkmark List Style (for Benefits/How it Works) */
 .list-checkmark li::before {
-    content: '✓';
- color: var(--primary-color);
+    content: '✔';
+    color: var(--primary-color);
     font-size: 1.1em;
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
- }
-
-/* Bullet List Style (for Side Effects & Storage Details) */
-.list-bullet li::before {
-    content: '•';
-    color: var(--accent-color);
- font-size: 1.2em;
     position: absolute;
     left: 0;
     top: -4px; /* ADJUSTED FOR LATO ALIGNMENT */
     font-weight: 700;
- }
-
-/* Specific fix for storage guide bullets */
-.storage-guide .list-bullet li::before {
-    left: 0;
- }
-
-.storage-guide .list-bullet li {
-    padding-left: 30px; 
 }
 
+/* Bullet List Style (for Side Effects/Storage Guide) */
+.list-bullet li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: -1px;
+    font-weight: 700;
+    line-height: 1.6;
+}
 
-/* X (Prohibited) List Style (for Contraindications) */
+/* X List Style (for Safety/Who Should Not Use) */
 .list-x li::before {
-    content: '✕';
- color: #cc0000; 
+    content: '✖';
+    color: #cc0000;
     font-size: 1.1em;
     position: absolute;
     left: 0;
     top: 0;
     font-weight: 700;
- }
-
+}
+/* ============================================== */
 /* ============================================== */
 /* NEW PRICING SECTION STYLES */
 /* ============================================== */
@@ -639,25 +739,28 @@ details.accordion ul li::before {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
- margin: var(--spacing-md) auto;
+    margin: var(--spacing-md) auto;
     max-width: 900px; /* Controls max width of the table */
 }
 
 .pricing-card {
     background-color: white;
- padding: var(--spacing-lg) var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-sm);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-subtle);
     text-align: center;
     border: 2px solid transparent;
     transition: all 0.3s ease;
- }
+}
 
 .pricing-card:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px);
- }
+}
 
+/* ---------------------------------------------- */
+/* TINANGGAL ANG .popular CLASS HIGHLIGHT SA PRICING */
+/* ---------------------------------------------- */
 .card-header .vial-count {
     font-size: 2.2em;
     color: var(--primary-color);
@@ -666,7 +769,7 @@ details.accordion ul li::before {
 
 .card-header .vial-note {
     font-size: 0.9em;
- color: var(--text-color-light);
+    color: var(--text-color-light);
     margin-top: 5px;
     margin-bottom: var(--spacing-sm);
 }
@@ -674,13 +777,14 @@ details.accordion ul li::before {
 .card-price {
     margin: var(--spacing-sm) 0 var(--spacing-md);
     line-height: 1;
- }
+}
 
 .card-price .price {
-    font-size: 3.5em; /* Large price font */
+    font-size: 3.5em;
+ /* Large price font */
     font-family: var(--font-heading);
     font-weight: 900;
- color: var(--text-color-dark);
+    color: var(--text-color-dark);
 }
 
 .card-price .currency {
@@ -688,256 +792,317 @@ details.accordion ul li::before {
     font-weight: 700;
     vertical-align: top;
     color: var(--primary-color);
- }
+}
 
 .card-price .per-unit {
     display: block;
     font-size: 1em;
     color: var(--accent-color);
     margin-top: 5px;
- }
-
-/* Highlight the Most Popular/Best Value card */
-.pricing-card.popular {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-pop);
-    transform: translateY(-5px);
- /* Lift it a bit higher initially */
 }
+
 
 /* Referral Note Styling */
 .referral-note {
     background-color: white;
     color: var(--primary-color);
- padding: var(--spacing-sm);
+    padding: var(--spacing-sm);
     border-radius: var(--border-radius);
-    text-align: center;
+    text-align: center; /* <-- Ito ang nagpapa-center */
     margin-top: var(--spacing-md);
     font-weight: 700;
     font-size: 1.1em;
-    border: 1px dashed var(--accent-color);
- }
+}
 
-.referral-note p {
-    text-align: center;
+/* ============================================== */
+/* NEW CHECKOUT FORM STYLES */
+/* ============================================== */
+.checkout-form-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    color: var(--text-color-dark);
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"], /* Added email type */
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: var(--font-body);
+    color: var(--text-color-dark);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Style for the order summary inside checkout */
+#checkout-order-summary {
+    background-color: var(--background-light);
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+}
+
+#checkout-order-summary .summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 0.95em;
+    color: var(--text-color-light);
+    border-bottom: 1px dashed #e5e5e5;
+}
+
+#checkout-order-summary .summary-total {
+    padding-top: 10px;
+    font-size: 1.1em;
+    font-weight: 700;
     color: var(--primary-color);
-    margin: 0;
- }
-
-/* ============================================== */
-/* NEW CLIENT RESULTS SECTION STYLES */
+    text-align: right;
+}
+/* END CHECKOUT FORM STYLES */
 /* ============================================== */
 
+
+/* ============================================== */
+/* NEW TESTIMONIALS SECTION STYLES */
+/* ============================================== */
 .testimonial-grid {
     display: grid;
     grid-template-columns: 1fr;
- gap: var(--spacing-md);
+    gap: var(--spacing-md);
     margin-top: var(--spacing-md);
 }
 
 .testimonial-card {
     background-color: white;
- /* Updated padding for a better look with the border */
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
     border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
     text-align: center;
- /* ADDED FRAME BORDER */
-    border: 1px solid var(--border-color);
-    /* Add transition for smooth hover effect */
-    transition: all 0.3s ease;
- }
- 
- /* NEW HOVER EFFECT for Testimonial Card */
+    overflow: hidden;
+    /* ADDED HOVER TRANSITION */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* ADDED HOVER EFFECT FOR TESTIMONIALS */
 .testimonial-card:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Pop shadow */
 }
 
 .before-after {
     display: flex;
- justify-content: space-around;
-    align-items: center;
-    margin-bottom: var(--spacing-sm);
-    padding: 10px;
-    border-bottom: 1px solid var(--border-color);
- }
-
-/* Styling for Actual Images in the Testimonial Card */
-.before-after img.result-image {
-    width: 45%;
- /* Keeps them side-by-side */
-    height: 200px;
- /* Uniform height for all images */
-    object-fit: cover;
- /* Ensures images fill the frame without distortion */
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-subtle);
- }
-
-/* REMOVING THE TEMPORARY PLACEHOLDER CSS FOR EMPTY DIVS 
-.before-after > ,
-.before-after > ,
-.before-after > ,
-.before-after > ,
-.before-after > ,
-.before-after >  {
-    width: 45%;
- height: 200px;
-    background-color: var(--background-light);
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
     justify-content: center;
-    color: var(--primary-color);
-    font-size: 0.9em;
-    font-weight: 500;
-    text-align: center;
- border: 1px solid var(--accent-color);
+    gap: 5px;
+    margin-bottom: var(--spacing-sm);
 }
-*/
 
+.result-image {
+    width: 48%;
+    height: auto;
+    max-width: 250px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 .testimonial-quote {
     font-style: italic;
-    color: var(--text-color-dark);
-    font-size: 1em;
-    padding: 0 var(--spacing-xs);
-    text-align: center;
- /* Override default left align */
+    padding: 0 var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
 }
 
 .client-name {
-    margin-top: var(--spacing-xs);
     font-weight: 700;
     color: var(--primary-color);
     font-size: 0.95em;
-    text-align: center;
- /* Override default left align */
+    text-align: center; /* Override default left align */
 }
-
 
 /* --- DESKTOP/TABLET OPTIMIZATION (min-width: 768px) --- */
 @media (min-width: 768px) {
-    h2 { font-size: 3.8em;
- } /* Increased size for Playfair Display impact */
-    h3 { font-size: 2.8em;
- } /* Increased size for Playfair Display impact */
-    h4 { font-size: 1.6em;
- } 
-    p, ul li, ol li { font-size: 1.1em;
- } 
-    p { text-align: left; } /* Reset p tag alignment for desktop */
+    h2 { 
+        font-size: 3.8em;
+    } /* Increased size for Playfair Display impact */
+    h3 { 
+        font-size: 2.8em;
+    } /* Increased size for Playfair Display impact */
+    h4 {
+        font-size: 1.6em;
+    }
+
+    p, ul li, ol li {
+        font-size: 1.1em;
+    }
+    p {
+        text-align: left;
+    } /* Reset p tag alignment for desktop */
+    
+    /* Center text inside guiding-philosophy block on desktop too */
+    .guiding-philosophy p {
+        text-align: center;
+    }
+    
 
     .container {
         padding: 0 var(--spacing-md);
- }
+    } 
 
     /* Header/Navigation */
     .menu-toggle {
         display: none;
- }
-
+    }
     .main-nav {
         display: flex;
         flex-direction: row;
         position: static;
- width: auto;
+        width: auto;
         padding: 0;
         border-bottom: none;
         box-shadow: none;
         /* Reset animation properties for desktop */
         max-height: none;
- opacity: 1;
+        opacity: 1;
         overflow: visible;
         transition: none;
     }
-
     .main-nav a {
         padding: 0;
- margin-left: var(--spacing-sm); 
+        margin-left: var(--spacing-sm);
         border-bottom: none;
     }
-    
     .main-nav a:hover {
         background-color: transparent;
- color: var(--primary-color); 
+        color: var(--primary-color);
     }
 
     /* Hero Section - Horizontal layout */
     .hero-content {
         flex-direction: row;
- text-align: left;
+        text-align: left;
     }
-    
     .hero-content .text-content {
         max-width: 55%;
- }
-    
+    }
     .hero-content .image-content {
         max-width: 40%;
- order: initial; 
+        order: initial;
     }
-    
+
     /* Benefits Grid - Horizontal layout */
     .benefits-grid {
         flex-direction: row;
- align-items: flex-start; 
+        align-items: flex-start;
+        justify-content: center; /* Optionally center the grid items horizontally */
+        gap: var(--spacing-lg); /* Increase gap between list and note */
+        padding: 0; /* Remove extra padding on desktop */
     }
 
     .benefits-grid ul {
         margin-top: 0;
- }
-
-    /* Align Mindful Note to the center of its space on desktop */
-    .mindful-note {
-        flex-basis: 45%;
- margin-top: 0;
-        align-self: stretch; 
-        margin-left: var(--spacing-md); 
-        max-width: none; 
+    }
+    
+    .benefits-grid .list-checkmark {
+        margin-top: 0;
+        flex: 1; 
+        max-width: 45%; /* Mas maliit na max-width para hindi masyadong mahaba ang line */
+        /* Retain the box styling from mobile: */
+        padding: var(--spacing-md); 
+        box-shadow: var(--shadow-subtle); 
     }
 
-    /* Dosage - Grid layout */
+    .benefits-grid .mindful-note {
+        margin-top: 0; /* Reset margin for desktop */
+        order: initial; /* Reset order for desktop */
+        flex: 1; /* Give it space */
+        max-width: 35%; /* Adjust the note size for desktop */
+        align-self: center; /* Center vertically within the row */
+    }
+
+    /* Dosage Steps - Grid layout for desktop */
     .dosage-steps {
         grid-template-columns: repeat(3, 1fr);
- gap: var(--spacing-md); 
+        gap: var(--spacing-md);
     }
 
-    /* Pricing Table - Grid layout for desktop */
+    /* Pricing Table - Horizontal layout for desktop */
     .pricing-table {
         flex-direction: row;
- justify-content: center;
-        align-items: stretch; /* Make cards the same height */
+        justify-content: center;
+        align-items: stretch;
+        /* Make cards the same height */
     }
-
     .pricing-card {
-        flex-basis: 30%;
- /* Gives space between cards */
+        flex-basis: 30%; /* Gives space between cards */
         max-width: 300px;
- /* Optional max width per card */
+        /* Optional max width per card */
         padding: var(--spacing-md) var(--spacing-sm);
- }
+    }
+    /* TINANGGAL ANG .popular CLASS HIGHLIGHT SA PRICING (Desktop) */
     
-    .pricing-card.popular {
-        transform: translateY(-20px);
- /* Lift the popular card more */
-        box-shadow: var(--shadow-pop);
- }
-
-    /* Testimonial Grid - Grid layout for desktop */
+    /* Testimonials Grid */
     .testimonial-grid {
         grid-template-columns: repeat(3, 1fr);
- gap: var(--spacing-lg);
+        gap: var(--spacing-md);
     }
     
-    /* Ensure actual images are scaled correctly on desktop */
-    .before-after img.result-image {
-        height: 250px;
- }
+}
 
-    /* Footer */
-    footer .container {
-        flex-direction: row;
- justify-content: space-between;
-    }
+/* ============================================== */
+/* NEW EMPTY CART MESSAGE STYLES (Your Request) */
+/* ============================================== */
+#empty-cart-message {
+    /* Styling na inilipat mula sa inline style ng <div> */
+    text-align: center; /* I-center ang lahat ng text sa loob */
+    padding: var(--spacing-md); /* Katumbas ng 40px */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+    margin: var(--spacing-sm) auto; /* Para naka-center ang div */
+    max-width: 600px;
+}
+
+.empty-cart-text {
+    /* Styling na inilipat mula sa inline style ng <p> */
+    font-style: italic;
+    color: var(--text-color-light);
+    text-align: center; 
+    margin: 0; /* Tanggalin ang default margin ng p tag */
+    line-height: 1.5;
+}
+/* ADDED: Para i-center ang action buttons sa Cart/Checkout */
+.cart-actions {
+    text-align: center; /* I-ce-center nito ang button/link sa loob */
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+/* ADDED: Para gawing sariling linya at i-center ang specific phrase */
+.centered-phrase {
+    display: block; /* Ginagawang block element para mag occupy ng sariling linya */
+    text-align: center; /* Tiyakin na naka-center */
+    margin-top: 5px; /* Dagdag space sa taas */
 }
