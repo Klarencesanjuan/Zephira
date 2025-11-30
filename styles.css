@@ -732,7 +732,6 @@ details.accordion ul li::before {
     /* Updated padding for a better look with the border */
     padding: var(--spacing-md);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-subtle);
     text-align: center;
     /* ADDED FRAME BORDER */
     border: 1px solid var(--border-color);
