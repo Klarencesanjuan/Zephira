@@ -1,0 +1,928 @@
+/* MODERN STYLES with Custom Palette and Fonts */
+
+:root {
+    /* Color Palette: Matching Zephira Images (Deep Pink/Maroon) */
+    --primary-color: #9C3364; /* Deep Maroon/Pink from images */
+ 
+    --accent-color: #C773A3; /* Lighter Pink for highlights */
+    --background-light: #FCEEF4; /* Very Light Pink for background */
+    --text-color-dark: #333333; /* Dark Gray for high contrast */
+    --text-color-light: #4c4c4c; /* Slightly darker light text for readability */
+    --border-color: #E0E0E0;
+ /* Typography: ELEGANT UPDATE (Playfair Display & Lato) */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+ /* Spacing & Effects */
+    --spacing-xl: 120px; 
+    --spacing-lg: 80px; 
+    --spacing-md: 40px; 
+    --spacing-sm: 20px; 
+    --spacing-xs: 10px; 
+    --border-radius: 12px;
+ --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+ --shadow-pop: 0 10px 20px rgba(156, 51, 100, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+ }
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.7; 
+    color: var(--text-color-dark);
+    background-color: white;
+    font-size: 16px; 
+    scroll-behavior: smooth;
+ /* Smooth scroll using CSS */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+ }
+
+/* Typography */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text-color-dark);
+    line-height: 1.2; 
+    margin-bottom: 0.7em; 
+    font-weight: 900;
+ /* Playfair Display Black */
+    letter-spacing: -0.01em; /* Adjusted letter spacing */
+    text-align: center;
+ /* Set default center align for sections */
+}
+
+h2 { font-size: 2.6em;
+ } /* Slightly bigger for hero feel */
+h3 { font-size: 2.1em; color: var(--primary-color); }
+h4 { font-size: 1.4em; margin-bottom: 0.4em;
+ font-weight: 700; } /* Playfair Display Bold */
+
+p, ul li, ol li { 
+    color: var(--text-color-light);
+ font-weight: 400; /* Lato Regular */
+    font-size: 1.05em; 
+    line-height: 1.7;
+    text-align: left;
+ /* Reset text align for body text */
+}
+
+.small-text {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: var(--text-color-light);
+    font-weight: 300;
+ /* Lato Light */
+}
+
+/* Header/Navigation */
+header {
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0px 0;
+ position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-subtle); 
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+/* Logo Styling */
+.logo-image {
+    height: 100px; 
+    width: auto;
+    display: block;
+ }
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+    display: block; 
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 2em;
+ cursor: pointer;
+    padding: 5px;
+}
+
+/* ---------------------------------------------------- */
+/* FIX 1: Smooth Mobile Navigation Animation (max-height) */
+/* ---------------------------------------------------- */
+.main-nav {
+    display: flex; /* Kept for flex layout */
+    flex-direction: column;
+    position: absolute;
+    top: 65px; 
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
+    
+    /* Animation Properties */
+    max-height: 0; /* Start hidden */
+    opacity: 0;
+    overflow: hidden; /* Hide content overflow */
+    padding: 0; /* Important: set padding to 0 for height calculation to start at 0 */
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease; /* Smooth transition */
+}
+
+.main-nav.active {
+    max-height: 500px; /* Large enough height to reveal all links smoothly */
+    opacity: 1; /* Fade in */
+    padding: 10px 0; /* Restore vertical padding to the content inside the nav */
+}
+/* ---------------------------------------------------- */
+
+
+.main-nav a {
+    color: var(--text-color-dark);
+    text-decoration: none;
+    padding: 15px var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+    margin: 0;
+ font-weight: 400; /* Lato Regular */
+    transition: background-color 0.3s;
+    text-align: left;
+ /* Fix mobile nav alignment */
+}
+
+.main-nav a:last-child {
+    border-bottom: none;
+ }
+
+.main-nav a:hover {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+ padding: 12px 30px; 
+    margin-top: var(--spacing-sm);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+ /* Lato Bold for buttons */
+    letter-spacing: 1px; 
+    transition: all 0.3s ease; 
+    border: 2px solid transparent;
+ cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9em; 
+    font-family: var(--font-body); /* Use Lato for button text for clarity */
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+ color: white;
+}
+
+.primary-btn:hover {
+    background-color: #7A284E;
+    box-shadow: 0 8px 15px rgba(156, 51, 100, 0.3);
+    transform: translateY(-2px);
+ }
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+ }
+
+/* Hero Section */
+.hero {
+    background-color: var(--background-light);
+    padding-bottom: var(--spacing-lg); 
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+ }
+
+.hero-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    text-align: center;
+ }
+
+.hero-content .text-content {
+    flex: 1;
+    max-width: 100%; 
+}
+
+.hero-content .image-content {
+    flex: 1;
+    max-width: 90%;
+ display: flex;
+    justify-content: center;
+    order: -1; 
+}
+
+.product-image-placeholder {
+    width: 280px;
+    height: 300px;
+    background-color: white;
+ border: 2px dashed var(--accent-color); 
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+ }
+
+/* Standard Sections */
+.section-padding {
+    padding: var(--spacing-lg) 0; 
+}
+
+.secondary-bg {
+    background-color: var(--background-light);
+ }
+
+/* --- Section Spacing Fixes (What is Tirzepatide) --- */
+#what-is-it .intro-text {
+    margin-bottom: var(--spacing-sm);
+ }
+
+#what-is-it .mindful-note {
+    margin-top: var(--spacing-sm); 
+}
+
+#what-is-it #how-it-works-heading {
+    margin-top: var(--spacing-md);
+ }
+
+/* Benefits Grid */
+.benefits-grid {
+    display: flex;
+    flex-direction: column; 
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+ }
+
+/* --- Mindful Note/Blockquote Centering and Styling --- */
+.mindful-note {
+    background-color: white;
+    border: 1px solid var(--border-color);
+ padding: var(--spacing-sm); 
+    border-radius: var(--border-radius);
+    font-style: italic;
+    color: var(--primary-color);
+    font-size: 1.05em; 
+    box-shadow: var(--shadow-subtle);
+    align-self: center; 
+    text-align: center; 
+    width: 100%; 
+    max-width: 400px;
+ /* Centering Fix */
+    margin: var(--spacing-sm) auto;
+ }
+
+/* Dosage/Steps (Modern Cards) */
+.dosage-steps {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: var(--spacing-sm); 
+    margin: var(--spacing-md) 0;
+ }
+
+.step-card {
+    background-color: white;
+    padding: var(--spacing-sm); 
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    transition: transform 0.3s;
+    border-left: 5px solid var(--accent-color);
+ text-align: left; /* Fix text alignment */
+}
+
+.step-card h4 {
+    text-align: left;
+ /* Fix h4 alignment */
+}
+
+.step-card:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ }
+
+.step-card h4 {
+    font-size: 1.2em; 
+    font-weight: 700; /* Playfair Display Bold */
+    margin-bottom: 0.3em;
+ }
+
+/* Reconstitution Guide */
+.guide-steps ol {
+    margin: var(--spacing-md) 0;
+    padding-left: var(--spacing-sm);
+ }
+
+.guide-steps ol li {
+    margin-bottom: 12px; 
+    font-size: 1em;
+ }
+
+
+/* --- STORAGE GUIDE ANIMATION --- */
+.storage-guide {
+    /* Base styles */
+    margin-top: var(--spacing-sm);
+ padding: 0; 
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+    box-shadow: var(--shadow-subtle);
+ /* Animation control */
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+ transition: max-height 0.5s ease-in-out, opacity 0.4s ease, visibility 0.5s;
+}
+
+.storage-guide.active {
+    max-height: 500px;
+ /* Large enough height (Static is fine here) */
+    opacity: 1;
+    visibility: visible;
+ /* Re-add border-style spacing */
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+ }
+
+.storage-content-wrapper {
+    /* Apply padding to the inner wrapper for consistent look */
+    padding: 0 var(--spacing-sm);
+ }
+
+/* FIX: Ensure the storage guide text and heading are left-aligned */
+.storage-guide h4 {
+    text-align: left;
+ /* Naka-left align na ang heading */
+    padding-left: var(--spacing-sm);
+ /* Keep it aligned with the list below */
+}
+
+.storage-guide .storage-list {
+    text-align: left;
+ /* Tiyakin na naka left align ang listahan */
+    padding-left: 20px;
+ /* Added padding for better organization */
+    margin-left: 0;
+ }
+/* END FIX */
+
+
+/* Certification */
+.cert-details {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+ }
+
+.cert-highlight {
+    font-size: 1.4em; 
+    margin-bottom: var(--spacing-sm); 
+    font-weight: 700; /* Lato Bold */
+    color: var(--primary-color);
+ }
+
+/* --- FIX: Set consistent spacing for the White Certification Box Content --- */
+.cert-details h3 {
+    margin-bottom: var(--spacing-sm);
+ margin-top: 0; 
+}
+
+.cert-details p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.cert-details .btn.primary-btn {
+    margin-top: var(--spacing-xs); 
+    margin-bottom: var(--spacing-sm);
+ }
+
+.cert-details .small-text {
+    margin-top: var(--spacing-xs); 
+    margin-bottom: var(--spacing-sm);
+ }
+/* -------------------------------------------------------------------- */
+
+/* Footer */
+footer {
+    padding: var(--spacing-sm) 0; 
+    background-color: var(--text-color-dark); 
+    color: white;
+    font-size: 0.9em;
+ }
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+ }
+
+footer p {
+    margin: 8px 0;
+    color: white;
+}
+
+footer a {
+    color: var(--accent-color);
+ text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: white;
+ }
+
+/* Accordion */
+details.accordion {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-sm);
+    box-shadow: var(--shadow-subtle);
+ cursor: default; 
+}
+
+details.accordion summary {
+    font-family: var(--font-heading);
+    font-weight: 700;
+ /* Playfair Display Bold */
+    font-size: 1.1em;
+    padding: var(--spacing-sm);
+    cursor: pointer; 
+    color: var(--primary-color);
+    list-style: none; 
+    position: relative;
+ display: block; 
+}
+
+/* --- ACCORDION CONTENT ANIMATION (Dynamic Height via JS) --- */
+.accordion-content-wrapper {
+    /* Initial state: Must be 0 initially */
+    max-height: 0;
+ opacity: 0;
+    visibility: hidden;
+    overflow: hidden; 
+    transition: max-height 0.5s ease-in-out, opacity 0.4s ease, visibility 0.5s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ display: block; 
+}
+
+/* This class only controls visibility/opacity, JS handles the max-height */
+.accordion.is-open > .accordion-content-wrapper {
+    opacity: 1;
+ visibility: visible;
+}
+
+/* Ensure the UL and P tags inside the wrapper have correct spacing */
+.accordion-content-wrapper p {
+    margin-top: 0;
+ padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+}
+.accordion-content-wrapper ul {
+    padding-right: var(--spacing-sm);
+ }
+
+details.accordion.is-open .accordion-content-wrapper ul {
+    padding-bottom: var(--spacing-sm); /* Add bottom padding when open */
+}
+
+
+details.accordion summary::after {
+    content: '+';
+ position: absolute;
+    right: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    line-height: 1;
+    transition: transform 0.3s;
+ }
+
+/* Update marker rule to use the new class */
+details.accordion.is-open summary::after {
+    content: '−';
+    transform: translateY(-50%) rotate(0deg);
+ }
+
+/* 2. Styling for the UNORDERED LIST (ul) inside the accordion (Tapering/Injection) */
+details.accordion ul {
+    list-style: none;
+ padding-left: 0;
+    margin-left: var(--spacing-sm); 
+}
+
+details.accordion ul li {
+    position: relative;
+    padding-left: 30px; 
+    margin-bottom: 8px;
+    font-size: 1em;
+ margin-left: 0; 
+}
+
+/* 3. The custom bullet itself for the accordion */
+details.accordion ul li::before {
+    content: '•';
+ color: var(--primary-color); 
+    font-size: 1.2em;
+    position: absolute;
+    left: 0; 
+    top: -1px;
+    font-weight: 700;
+    line-height: 1.6;
+ }
+/* ------------------------------------------- */
+
+
+/* --- CUSTOM LIST STYLES (Checkmark, Bullet, X) --- */
+
+/* Base style for custom lists */
+.list-checkmark, .list-bullet, .list-x {
+    list-style: none;
+ padding-left: 0;
+    flex: 1;
+    margin-top: 0.5em; 
+}
+
+.list-checkmark li, .list-bullet li, .list-x li {
+    position: relative;
+    padding-left: 30px;
+ margin-bottom: 12px; 
+    font-size: 1.05em; 
+    line-height: 1.6;
+}
+
+/* Checkmark List Style (for Benefits/How it works) */
+.list-checkmark li::before {
+    content: '✓';
+ color: var(--primary-color);
+    font-size: 1.1em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+ }
+
+/* Bullet List Style (for Side Effects & Storage Details) */
+.list-bullet li::before {
+    content: '•';
+    color: var(--accent-color);
+ font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: -4px; /* ADJUSTED FOR LATO ALIGNMENT */
+    font-weight: 700;
+ }
+
+/* Specific fix for storage guide bullets */
+.storage-guide .list-bullet li::before {
+    left: 0;
+ }
+
+.storage-guide .list-bullet li {
+    padding-left: 30px; 
+}
+
+
+/* X (Prohibited) List Style (for Contraindications) */
+.list-x li::before {
+    content: '✕';
+ color: #cc0000; 
+    font-size: 1.1em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+ }
+
+/* ============================================== */
+/* NEW PRICING SECTION STYLES */
+/* ============================================== */
+.pricing-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+ margin: var(--spacing-md) auto;
+    max-width: 900px; /* Controls max width of the table */
+}
+
+.pricing-card {
+    background-color: white;
+ padding: var(--spacing-lg) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+ }
+
+.pricing-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+ }
+
+.card-header .vial-count {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 0;
+}
+
+.card-header .vial-note {
+    font-size: 0.9em;
+ color: var(--text-color-light);
+    margin-top: 5px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-price {
+    margin: var(--spacing-sm) 0 var(--spacing-md);
+    line-height: 1;
+ }
+
+.card-price .price {
+    font-size: 3.5em; /* Large price font */
+    font-family: var(--font-heading);
+    font-weight: 900;
+ color: var(--text-color-dark);
+}
+
+.card-price .currency {
+    font-size: 1.2em;
+    font-weight: 700;
+    vertical-align: top;
+    color: var(--primary-color);
+ }
+
+.card-price .per-unit {
+    display: block;
+    font-size: 1em;
+    color: var(--accent-color);
+    margin-top: 5px;
+ }
+
+/* Highlight the Most Popular/Best Value card */
+.pricing-card.popular {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-pop);
+    transform: translateY(-5px);
+ /* Lift it a bit higher initially */
+}
+
+/* Referral Note Styling */
+.referral-note {
+    background-color: white;
+    color: var(--primary-color);
+ padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin-top: var(--spacing-md);
+    font-weight: 700;
+    font-size: 1.1em;
+    border: 1px dashed var(--accent-color);
+ }
+
+.referral-note p {
+    text-align: center;
+    color: var(--primary-color);
+    margin: 0;
+ }
+
+/* ============================================== */
+/* NEW CLIENT RESULTS SECTION STYLES */
+/* ============================================== */
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+ gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.testimonial-card {
+    background-color: white;
+    /* Updated padding for a better look with the border */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    /* ADDED FRAME BORDER */
+    border: 1px solid var(--border-color);
+ }
+
+.before-after {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+ }
+
+/* Styling for Actual Images in the Testimonial Card */
+.before-after img.result-image {
+    width: 45%;
+ /* Keeps them side-by-side */
+    height: 200px;
+ /* Uniform height for all images */
+    object-fit: cover;
+ /* Ensures images fill the frame without distortion */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+ }
+
+/* REMOVING THE TEMPORARY PLACEHOLDER CSS FOR EMPTY DIVS 
+.before-after > ,
+.before-after > ,
+.before-after > ,
+.before-after > ,
+.before-after > ,
+.before-after >  {
+    width: 45%;
+ height: 200px;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: center;
+ border: 1px solid var(--accent-color);
+}
+*/
+
+
+.testimonial-quote {
+    font-style: italic;
+    color: var(--text-color-dark);
+    font-size: 1em;
+    padding: 0 var(--spacing-xs);
+    text-align: center;
+ /* Override default left align */
+}
+
+.client-name {
+    margin-top: var(--spacing-xs);
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 0.95em;
+    text-align: center;
+ /* Override default left align */
+}
+
+
+/* --- DESKTOP/TABLET OPTIMIZATION (min-width: 768px) --- */
+@media (min-width: 768px) {
+    h2 { font-size: 3.8em;
+ } /* Increased size for Playfair Display impact */
+    h3 { font-size: 2.8em;
+ } /* Increased size for Playfair Display impact */
+    h4 { font-size: 1.6em;
+ } 
+    p, ul li, ol li { font-size: 1.1em;
+ } 
+    p { text-align: left; } /* Reset p tag alignment for desktop */
+
+    .container {
+        padding: 0 var(--spacing-md);
+ }
+
+    /* Header/Navigation */
+    .menu-toggle {
+        display: none;
+ }
+
+    .main-nav {
+        display: flex;
+        flex-direction: row;
+        position: static;
+ width: auto;
+        padding: 0;
+        border-bottom: none;
+        box-shadow: none;
+        /* Reset animation properties for desktop */
+        max-height: none; 
+        opacity: 1;
+        overflow: visible;
+        transition: none;
+    }
+
+    .main-nav a {
+        padding: 0;
+ margin-left: var(--spacing-sm); 
+        border-bottom: none;
+    }
+    
+    .main-nav a:hover {
+        background-color: transparent;
+ color: var(--primary-color); 
+    }
+
+    /* Hero Section - Horizontal layout */
+    .hero-content {
+        flex-direction: row;
+ text-align: left;
+    }
+    
+    .hero-content .text-content {
+        max-width: 55%;
+ }
+    
+    .hero-content .image-content {
+        max-width: 40%;
+ order: initial; 
+    }
+    
+    /* Benefits Grid - Horizontal layout */
+    .benefits-grid {
+        flex-direction: row;
+ align-items: flex-start; 
+    }
+
+    .benefits-grid ul {
+        margin-top: 0;
+ }
+
+    /* Align Mindful Note to the center of its space on desktop */
+    .mindful-note {
+        flex-basis: 45%;
+ margin-top: 0;
+        align-self: stretch; 
+        margin-left: var(--spacing-md); 
+        max-width: none; 
+    }
+
+    /* Dosage - Grid layout */
+    .dosage-steps {
+        grid-template-columns: repeat(3, 1fr);
+ gap: var(--spacing-md); 
+    }
+
+    /* Pricing Table - Grid layout for desktop */
+    .pricing-table {
+        flex-direction: row;
+ justify-content: center;
+        align-items: stretch; /* Make cards the same height */
+    }
+
+    .pricing-card {
+        flex-basis: 30%;
+ /* Gives space between cards */
+        max-width: 300px;
+ /* Optional max width per card */
+        padding: var(--spacing-md) var(--spacing-sm);
+ }
+    
+    .pricing-card.popular {
+        transform: translateY(-20px);
+ /* Lift the popular card more */
+        box-shadow: var(--shadow-pop);
+ }
+
+    /* Testimonial Grid - Grid layout for desktop */
+    .testimonial-grid {
+        grid-template-columns: repeat(3, 1fr);
+ gap: var(--spacing-lg);
+    }
+    
+    /* Ensure actual images are scaled correctly on desktop */
+    .before-after img.result-image {
+        height: 250px;
+ }
+
+    /* Footer */
+    footer .container {
+        flex-direction: row;
+ justify-content: space-between;
+    }
+}
