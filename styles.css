@@ -4,7 +4,8 @@
     /* Color Palette: Matching Zephira Images (Deep Pink/Maroon) */
     --primary-color: #9C3364; /* Deep Maroon/Pink from images */
  
-    --accent-color: #C773A3; /* Lighter Pink for highlights */
+    --accent-color: #C773A3; 
+ /* Lighter Pink for highlights */
     --background-light: #FCEEF4; /* Very Light Pink for background */
     --text-color-dark: #333333; /* Dark Gray for high contrast */
     --text-color-light: #4c4c4c; /* Slightly darker light text for readability */
@@ -120,39 +121,46 @@ header {
 /* FIX 1: Smooth Mobile Navigation Animation (max-height) */
 /* ---------------------------------------------------- */
 .main-nav {
-    display: flex; /* Kept for flex layout */
+    display: flex;
+ /* Kept for flex layout */
     flex-direction: column;
     position: absolute;
     top: 65px; 
     left: 0;
     width: 100%;
-    background-color: white;
+ background-color: white;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
-    
-    /* Animation Properties */
+ /* Animation Properties */
     max-height: 0; /* Start hidden */
     opacity: 0;
-    overflow: hidden; /* Hide content overflow */
-    padding: 0; /* Important: set padding to 0 for height calculation to start at 0 */
-    transition: max-height 0.4s ease-in-out, opacity 0.3s ease; /* Smooth transition */
+    overflow: hidden;
+ /* Hide content overflow */
+    padding: 0;
+ /* Important: set padding to 0 for height calculation to start at 0 */
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+ /* Smooth transition */
 }
 
 .main-nav.active {
-    max-height: 500px; /* Large enough height to reveal all links smoothly */
-    opacity: 1; /* Fade in */
-    padding: 10px 0; /* Restore vertical padding to the content inside the nav */
+    max-height: 500px;
+ /* Large enough height to reveal all links smoothly */
+    opacity: 1;
+ /* Fade in */
+    padding: 10px 0;
+ /* Restore vertical padding to the content inside the nav */
 }
 /* ---------------------------------------------------- */
 
 
 .main-nav a {
     color: var(--text-color-dark);
-    text-decoration: none;
+ text-decoration: none;
     padding: 15px var(--spacing-sm);
     border-bottom: 1px solid var(--border-color);
     margin: 0;
- font-weight: 400; /* Lato Regular */
+ font-weight: 400;
+ /* Lato Regular */
     transition: background-color 0.3s;
     text-align: left;
  /* Fix mobile nav alignment */
@@ -729,17 +737,25 @@ details.accordion ul li::before {
 
 .testimonial-card {
     background-color: white;
-    /* Updated padding for a better look with the border */
+ /* Updated padding for a better look with the border */
     padding: var(--spacing-md);
     border-radius: var(--border-radius);
     text-align: center;
-    /* ADDED FRAME BORDER */
+ /* ADDED FRAME BORDER */
     border: 1px solid var(--border-color);
+    /* Add transition for smooth hover effect */
+    transition: all 0.3s ease;
  }
+ 
+ /* NEW HOVER EFFECT for Testimonial Card */
+.testimonial-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
 
 .before-after {
     display: flex;
-    justify-content: space-around;
+ justify-content: space-around;
     align-items: center;
     margin-bottom: var(--spacing-sm);
     padding: 10px;
@@ -830,8 +846,8 @@ details.accordion ul li::before {
         border-bottom: none;
         box-shadow: none;
         /* Reset animation properties for desktop */
-        max-height: none; 
-        opacity: 1;
+        max-height: none;
+ opacity: 1;
         overflow: visible;
         transition: none;
     }
