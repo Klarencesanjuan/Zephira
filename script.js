@@ -288,7 +288,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const shippingForm = document.getElementById('shipping-form');
     if (shippingForm) {
         shippingForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
+            e.preventDefault();
+            
+            // NEW CODE: Show loading modal
+            document.getElementById('loading-modal').style.display = 'flex';
             
             const name = document.getElementById('checkout-name').value;
             const email = document.getElementById('checkout-email').value;
@@ -332,19 +335,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(emailData)
             })
-            .then(response => {
+.then(response => {
+                // SUCCESS/FAIL HANDLING: Tanggalin ang alert()
                 if (response.ok) {
-                    alert(`Order Successfully Finalized! We have successfully sent the order details to your email. (${sellerEmail}).\n\nThank you, ${name}!`);
+                    // Success (Formspree accepted the data)
+                    console.log('Order Submission Successful. Showing Order Complete Screen.');
+                    return response.json(); 
                 } else {
-                    // Mag-a-alert kung nag-fail ang submission (network o server error)
-                    alert(`ORDER SUBMISSION FAILED (Code: ${response.status}). Please copy the details below and send them manually to ${sellerEmail}:\n\n` + message);
+                    // Failure (Server rejected the request)
+                    console.error('Order Submission Failed. Server Status:', response.status);
+                    // Mag-throw ng error para mapunta sa .catch block
+                    throw new Error(`Submission failed with status: ${response.status}`);
                 }
             })
+            .then(data => {
+                // Optional: Pwede kang maglagay ng code dito kung kailangan.
+                // Ang main success screen (Order Complete) ay lalabas sa .finally.
+            })
             .catch(error => {
-                console.error('Network or Fetch Error:', error);
-                alert('ORDER SUBMISSION FAILED DUE TO NETWORK ERROR. Please copy the details below and send them manually:\n\n' + message);
+                // Error Handling: Tanggalin ang alert() at mag-log na lang sa console
+                console.error('Order submission encountered a network error or server rejection:', error);
+                // Dito ka pwedeng mag-set ng error message sa Order Complete screen kung gusto mo.
+                // Sa ngayon, hahayaan lang natin lumabas ang animation regardless of final status.
             })
            .finally(() => {
+                // NEW CODE: Hide loading modal first
+                document.getElementById('loading-modal').style.display = 'none';
                 // Clear the cart and reset form regardless of success/fail
                 cart = [];
                 shippingForm.reset();
