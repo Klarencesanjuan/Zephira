@@ -10,10 +10,16 @@ function renderCart() {
     const contentWrapper = document.getElementById('cart-content-wrapper');
     const cartView = document.getElementById('cart-view');
     const checkoutView = document.getElementById('checkout-view');
+    const orderCompleteView = document.getElementById('order-complete'); // ADDED: New view element
 
-    // Tiyakin na Cart View ang nakikita, at Checkout View ay nakatago
+    // Tiyakin na Cart View ang nakikita, at Checkout View at Order Complete ay nakatago
     cartView.style.display = 'block';
     checkoutView.style.display = 'none';
+    if (orderCompleteView) { // ADDED: Hide Order Complete View
+        orderCompleteView.style.display = 'none';
+    }
+    
+    // ... (the rest of the renderCart function remains the same)
 
     // Display/Hide Cart Content
     if (cart.length === 0) {
@@ -116,12 +122,17 @@ function showCheckoutForm() {
     const cartView = document.getElementById('cart-view');
     const checkoutView = document.getElementById('checkout-view');
     const orderSummaryContainer = document.getElementById('checkout-order-summary');
+    const orderCompleteView = document.getElementById('order-complete'); // ADDED: New view element
     
     // 1. View Switching
     cartView.style.display = 'none';
     checkoutView.style.display = 'block';
+    if (orderCompleteView) { // ADDED: Hide Order Complete View
+        orderCompleteView.style.display = 'none';
+    }
 
     // 2. Build Order Summary
+    // ... (the rest of the showCheckoutForm function remains the same)
     let total = 0;
     let summaryHtml = '';
 
@@ -289,18 +300,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const total = document.getElementById('cart-total').textContent;
             
             // Full message for backup/manual send
-            const message = `Hello, gusto ko pong umorder. Narito ang aking details:\n\n` +
+            const message = `Hello, I would like to place an order. Here are my details:\n\n` +
                             `Name: ${name}\n` +
                             `Email: ${email}\n` +
                             `Mobile: ${mobile}\n` +
                             `Address: ${address}\n\n` +
                             `Order: ${orderDetails}\n` +
                             `Total: ₱${total} php\n\n` +
-                            `Salamat po!`;
+                            `Thank you!`;
             
             // !!! PALITAN ITO NG IYONG ACTUAL GMAIL AT FORMSPREE/API ENDPOINT !!!
-            const apiEndpoint = 'https://formspree.io/f/mvgeovvd'; 
-            const sellerEmail = 'Klarencegraphics@gmail.com'; 
+            const apiEndpoint = 'https://formspree.io/f/xqarpnbp'; 
+            const sellerEmail = 'Zephira2025@gmail.com'; 
 
             // Data object to send to the server/email service
             const emailData = {
@@ -333,14 +344,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Network or Fetch Error:', error);
                 alert('ORDER SUBMISSION FAILED DUE TO NETWORK ERROR. Please copy the details below and send them manually:\n\n' + message);
             })
-            .finally(() => {
-                // Clear the cart, reset form, and switch views regardless of success/fail
+           .finally(() => {
+                // Clear the cart and reset form regardless of success/fail
                 cart = [];
                 shippingForm.reset();
+                renderCart(); // Para ma-update ang cart UI (kahit empty na)
+                
+                // 1. Itago ang checkout view
                 document.getElementById('checkout-view').style.display = 'none';
-                document.getElementById('cart-view').style.display = 'block';
-                renderCart();
-                document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+                // 2. Ipakita ang order complete view
+                const orderCompleteView = document.getElementById('order-complete');
+                if (orderCompleteView) {
+                    orderCompleteView.style.display = 'flex'; // Gamitin ang 'flex' dahil sa CSS style
+                    // 3. Mag-scroll papunta sa Order Complete section
+                    orderCompleteView.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
     }
